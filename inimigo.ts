@@ -1,4 +1,4 @@
-iimport { Item } from "./Item";
+import { Item } from "./Item";
 import { Personagem } from "./Personagem";
 
 
@@ -79,7 +79,7 @@ export class Goblin implements inimigo{
             }
         }
         causarDano(alvo: Personagem ): void {
-            console.log(`${this.nome} ataca ${alvo.nome} causando ${this.forca} de dano!`);
+            console.log(`${this.nome} ataca ${alvo.nome} causando ${this.forca} de dano.`);
             alvo.vida -= this.forca;
             console.log(`${alvo.nome} agora tem ${alvo.vida} de vida.`);
             if (alvo.vida <= 0) {
@@ -110,7 +110,6 @@ export class Goblin implements inimigo{
     }
     
     export class Bruxa implements inimigo{
-
         receberDano(dano: number): void {
             if (dano <= 0) {
                 console.log(`${this.nome} não sofreu dano.`);
