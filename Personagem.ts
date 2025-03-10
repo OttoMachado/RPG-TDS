@@ -8,7 +8,7 @@ export class Personagem {
     forca: number;
     agilidade: number;
     inteligencia: number;
-    inventario: string[];
+    inventario: Item[];
 
     constructor(
         nome: string,
@@ -17,7 +17,7 @@ export class Personagem {
         forca: number,
         agilidade: number,
         inteligencia: number,
-        inventario = []
+        inventario: Item[] = []
         
     ){
         this.nome = nome;
@@ -60,7 +60,7 @@ export class Personagem {
                 console.log(`${alvo.nome} foi derrotado!`);
             }
         }
-        adicionaItem(item: string): void {
+        adicionaItem(item: Item): void {
           this.inventario.push(item);
            console.log(`${this.nome} Adicionou ${item} ao seu Próprio inventario.`)
         }
@@ -70,30 +70,35 @@ export class Personagem {
 
     export class Guerreiro extends Personagem{
     constructor(nome: string){
-        super(nome, 1, 150, 40, 50, 50 ['Espada e escudo'])
+        const machado = new Item('Machado', 'Arma');
+        super(nome, 1, 150, 40, 50, 50, [machado])
     }
 }
 
    export class Mago extends Personagem{
     constructor(nome: string){
-        super(nome, 1, 85, 25, 100, 200 ['Luvas Magicas'])
+        const luva = new Item('Luvas Mágicas', 'Arma');
+        super(nome, 1, 85, 25, 100, 200, [luva])
     } 
 }
 
     export class Arqueiro extends Personagem{
     constructor(nome: string){
-        super(nome, 1, 80, 25, 200, 100 ['Arco'])
+        const arco = new Item('Arco', 'Arma');
+        super(nome, 1, 80, 25, 200, 100, [arco])
     } 
 }
 
     export class Samurai extends Personagem{
     constructor(nome: string){
-        super(nome, 1, 120, 40, 150, 100 ['Katana'])
+        const katana = new Item('Katana', 'Arma');
+        super(nome, 1, 120, 40, 150, 100, [katana]);
     } 
 }
 
-    export class Vampiro extends Personagem{
-    constructor(nome: string){
-        super(nome, 1, 120, 45, 150, 100 ['Rapieira'])
-    } 
+export class Vampiro extends Personagem {
+    constructor(nome: string) {
+        const rapieira = new Item('Rapieira', 'Arma');
+        super(nome, 1, 120, 45, 150, 100, [rapieira]);
+    }
 }
