@@ -12,14 +12,12 @@ export function iniciar(): void {
         const escolha = readlineSync.question(
             `O que quer fazer agora?\n1. Explorar a passagem secreta.\n2. Procurar por itens.\nEscolha: `
         );
-    
-        if (escolha === '1') {
-            lutaBruxa(personagemEscolhido);
-        } else {
-            console.log("Você não encontrou nada kkkkkkkkkkkkkkkkkkkkk.");
+    }
+        if(lutaBruxa(personagemEscolhido)){
+            lutaUrsoECristiano(personagemEscolhido)
         }
     }
-}
+
 
 function escolherClasse(): Personagem {
     const nome = readlineSync.question('Qual seu nome, Jovem Viajante? ');
@@ -55,11 +53,19 @@ function lutaGoblin(personagem: Personagem): boolean {
                     console.log("Você derrotou o Goblin feio da Desgraça");
                     return true;
                 }
+
+                goblin.causarDano(personagem);
+
+                if (personagem.vida <= 0) {
+                    console.log(`${personagem.nome} Morreu pro goblin feiokkkkkkkkkkkkkkkkkkkkkkkkkkkkkk`);
+                    return false;
+                }
                 break;
+
             case '2':
                 console.log("Você fugiu para outra parte da caverna.");
                 return true;
-                break;
+
             case '3':
                 console.log("Você saiu do jogo.");
                 return false;
@@ -69,24 +75,67 @@ function lutaGoblin(personagem: Personagem): boolean {
     }
 }
 
-function lutaBruxa(personagem: Personagem): void {
+function lutaBruxa(personagem: Personagem): boolean {
     console.log("Você segue pela passagem secreta e encontra uma velha desgraçada.");
-    const bruxa = new Bruxa("Bruxa", 1, 30, 20, 20, -20);
-    const escolha = readlineSync.question(
-        `O que tu quer fazer? \n1. Atacar a Bruxa.\n2. Aceitar um feitiço.\nEscolha: `
-    );
+    const bruxa = new Bruxa("Bruxa", 1, 40, 20, 20, -20);
+        while (true) {
+            const escolha = readlineSync.question(
+               `O que tu quer fazer? \n1. Atacar a Bruxa.\n2. Aceitar um feitiço.\nEscolha: `
+            );
 
     switch (escolha) {
         case '1':
-            bruxa.receberDano(20);
+            bruxa.receberDano(10);
             console.log("Você atacou a bruxa velha");
+            if (bruxa.vida <= 0) {
+                console.log("Mato a véia na Paulada e Encontrou Dois caminhos.");
+                return true;
+            }
+            bruxa.causarDano(personagem);
+
+            if (personagem.vida <= 0) {
+                console.log(`${personagem.nome} Morreu pra velha fudida!`);
+                return false;
+            }
             break;
+
+            break;
+
         case '2':
             console.log("A bruxa lançou um feitiço em você (é uma benção)");
-            break;
+            return true;
         default:
-            console.log("Opção inválida");
+            console.log("Opção inválida jegue.");
     }
 }
+}
+
+function lutaUrsoECristiano(personagem: Personagem): boolean {
+    console.log("Voce matou a bruxa e se Encontrou com o Urso de Metralhadora e o Cristiano Ronaldo de Bicleta.");
+        while (true) {
+            const escolha = readlineSync.question(
+               `O que vai escolher? \n1. Atacar eles.\n2. Fugir.\nEscolha: `
+            );
+
+    switch (escolha) {
+        case '1':
+            if(escolha == '1'){
+                console.log('Voce Morreu de forma Brutal (nunca brinque com um Urso de Metralhadora nem com o Cristiano Ronaldo de Bicleta!)')
+                return true;
+            }
+            break;
+
+        case '2':
+            if(escolha == '2'){
+                console.log("Voce Fugiu do mal e achou uma Forma de Salvar o Mundo Pacificamente! (Good Ending)");
+                return true;
+            }
+            break;
+        default:
+            console.log("Opção inválida jegue.");
+    }
+}
+}
+
 
 iniciar();
