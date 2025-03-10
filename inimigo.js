@@ -64,7 +64,7 @@ var Orc = /** @class */ (function () {
         }
     };
     Orc.prototype.causarDano = function (alvo) {
-        console.log("".concat(this.nome, " ataca ").concat(alvo.nome, " causando ").concat(this.forca, " de dano!"));
+        console.log("".concat(this.nome, " ataca ").concat(alvo.nome, " causando ").concat(this.forca, " de dano."));
         alvo.vida -= this.forca;
         console.log("".concat(alvo.nome, " agora tem ").concat(alvo.vida, " de vida."));
         if (alvo.vida <= 0) {
