@@ -15,7 +15,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Personagem = void 0;
+exports.Vampiro = exports.Samurai = exports.Arqueiro = exports.Mago = exports.Guerreiro = exports.Personagem = void 0;
+var Item_1 = require("./Item");
 var Personagem = /** @class */ (function () {
     function Personagem(nome, nivel, vida, forca, agilidade, inteligencia, inventario) {
         if (inventario === void 0) { inventario = []; }
@@ -64,35 +65,45 @@ exports.Personagem = Personagem;
 var Guerreiro = /** @class */ (function (_super) {
     __extends(Guerreiro, _super);
     function Guerreiro(nome) {
-        return _super.call(this, nome, 1, 150, 40, 50, 50['Espada e escudo']) || this;
+        var machado = new Item_1.Item('Machado', 'Arma');
+        return _super.call(this, nome, 1, 150, 40, 50, 50, [machado]) || this;
     }
     return Guerreiro;
 }(Personagem));
+exports.Guerreiro = Guerreiro;
 var Mago = /** @class */ (function (_super) {
     __extends(Mago, _super);
     function Mago(nome) {
-        return _super.call(this, nome, 1, 85, 25, 100, 200['Luvas Magicas']) || this;
+        var luva = new Item_1.Item('Luvas Mágicas', 'Arma');
+        return _super.call(this, nome, 1, 85, 25, 100, 200, [luva]) || this;
     }
     return Mago;
 }(Personagem));
+exports.Mago = Mago;
 var Arqueiro = /** @class */ (function (_super) {
     __extends(Arqueiro, _super);
     function Arqueiro(nome) {
-        return _super.call(this, nome, 1, 80, 25, 200, 100['Arco']) || this;
+        var arco = new Item_1.Item('Arco', 'Arma');
+        return _super.call(this, nome, 1, 80, 25, 200, 100, [arco]) || this;
     }
     return Arqueiro;
 }(Personagem));
+exports.Arqueiro = Arqueiro;
 var Samurai = /** @class */ (function (_super) {
     __extends(Samurai, _super);
     function Samurai(nome) {
-        return _super.call(this, nome, 1, 120, 40, 150, 100['Katana']) || this;
+        var katana = new Item_1.Item('Katana', 'Arma');
+        return _super.call(this, nome, 1, 120, 40, 150, 100, [katana]) || this;
     }
     return Samurai;
 }(Personagem));
+exports.Samurai = Samurai;
 var Vampiro = /** @class */ (function (_super) {
     __extends(Vampiro, _super);
     function Vampiro(nome) {
-        return _super.call(this, nome, 1, 120, 45, 150, 100['Rapieira']) || this;
+        var rapieira = new Item_1.Item('Rapieira', 'Arma');
+        return _super.call(this, nome, 1, 120, 45, 150, 100, [rapieira]) || this;
     }
     return Vampiro;
 }(Personagem));
+exports.Vampiro = Vampiro;
