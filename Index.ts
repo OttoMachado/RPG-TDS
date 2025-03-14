@@ -127,7 +127,7 @@ function lutaUrsoECristiano(personagem: Personagem): boolean {
 
         case '2':
             if(escolha == '2'){
-                console.log("Voce Fugiu do mal e achou uma Forma de Salvar o Mundo Pacificamente! (Good Ending)");
+                console.log("Voce Fugiu do mal e achou uma Forma de Salvar o Mundo Pai. (Good Ending)");
                 return true;
             }
             break;
